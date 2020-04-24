@@ -1,3 +1,11 @@
+Personal Website of Kristin Hu
+
+Project assignment of CS185, S20
+
+Same contents with https://github.com/KH07/20_Spring_CS_185
+
+Site link: https://kh07.github.io/20_Spring_CS_185_React_Version/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
