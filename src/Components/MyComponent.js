@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { SRLWrapper } from "simple-react-lightbox"
+import './MyComponent.css'
 
 import Img1 from './images/photos/1.jpeg'
 import Img2 from './images/photos/2.jpeg'
