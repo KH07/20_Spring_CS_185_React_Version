@@ -1,0 +1,28 @@
+.Main {
+    display: flex;
+    margin-top: 2%;
+}
+
+.Image {
+    width: 38.2%;
+}
+  
+figcaption {
+    color: gray;
+    font-style: italic;
+    text-align: center;
+}
+
+.Bio {
+    margin-top: 0;
+    margin-left: 1%;
+    font-size: 150%;
+}
+
+p {
+    margin: 0;
+}
+
+div {
+    white-space: pre-wrap;
+}
