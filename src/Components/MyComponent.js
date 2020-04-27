@@ -20,8 +20,8 @@ function MyComponent() {
                     <img src={Img3} alt="Universal Studios Singapore, October 9, 2017"/>
                     <img src={Img4} alt="Xi'an, February 26, 2018"/>
                     <img src={Img5} alt="Highwat to Ya'an, August 7, 2018"/>
-                    <img src={Img6} alt="UCSB Campus Point, February 17, 2019"/>
-                    <img src={Img7} alt="Forth of July, July 4, 2019"/>
+                    <img src={Img6} alt="Forth of July, July 4, 2019"/>
+                    <img src={Img7} alt="UCSB Campus Point, February 17, 2019"/>
                 </div>
             </SRLWrapper>
         </div>
