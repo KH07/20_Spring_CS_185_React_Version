@@ -1,6 +1,5 @@
 body {
   font-family: 'Times New Roman', Times, serif;
-
 }
 
 h1 {
@@ -11,24 +10,19 @@ h1 {
 
 .nav-bar {
   display: flex;
-  background-color: gray;
-  /* overflow: hidden; */
-  /* cursor: pointer; */
-  /* height: 2%; */
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
+  overflow: hidden;
 }
 
 .tab {
-  /* overflow: hidden; */
+  overflow: hidden;
   float: left;
-  /* text-align: left; */
+  text-align: center;
   justify-content: space-around;
   width: 25%;
+  font-size: small;
 }
 
 .tab >h2:hover {
-  background-color: darkgray;
-  color: white;
+  background-color: black;
+  color: rgb(75, 213, 238);
 }

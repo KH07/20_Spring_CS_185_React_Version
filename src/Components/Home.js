@@ -7,7 +7,7 @@ export class Home extends Component {
         return (
             <div className="Main">
                 <div className="Image">
-                    <img src={sky} alt="REFRESH" width="100%" />
+                    <img src={sky} alt="REFRESH" />
                     <figcaption className="text">Galaxy Cluster Abell 1689, Shot by Hubble Space Telescope, on July 7, 2010</figcaption>
                 </div>
                 <div className="Bio">

@@ -3,7 +3,7 @@ import Tab from './Tab'
 
 export class Tablist extends Component {
     render() {
-        return this.props.tabs.map( (tab)=>(
+        return this.props.tabs.map((tab)=>(
             <Tab tab={tab}
             changeTab={this.props.changeTab}
             activeTab={this.props.activeTab}
