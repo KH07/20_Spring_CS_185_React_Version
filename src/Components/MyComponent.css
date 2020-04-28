@@ -1,0 +1,9 @@
+.Images {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-row-gap: 20px;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+}

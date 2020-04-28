@@ -1,0 +1,9 @@
+.gallary {
+    padding: 1%;
+}
+
+.gallary img {
+    margin: 10px;
+    width: 97%;
+    height: auto;
+}
