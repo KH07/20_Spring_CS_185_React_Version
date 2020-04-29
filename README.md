@@ -1,6 +1,4 @@
-Personal Website of Kristin Hu
-
-Project assignment of CS185, S20
+## Personal Website of Kristin Hu
 
 Same contents with https://github.com/KH07/20_Spring_CS_185
 
