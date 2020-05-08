@@ -1,0 +1,23 @@
+.page {
+  margin: auto;
+  display: flex;
+}
+
+.form {
+  width: 50%;
+}
+
+input {
+  width: 90%;
+  padding: 2%;
+  margin: 7px 0;
+  font-size: medium;
+}
+
+.box {
+  display: grid;
+}
+
+.message {
+  padding: 10px;
+}
