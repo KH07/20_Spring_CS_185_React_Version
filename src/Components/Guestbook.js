@@ -15,8 +15,6 @@ export class Guestbook extends Component {
         name: '',
         info: [],
     }
-    this.change = this.change.bind(this);
-    this.sent = this.sent.bind(this);
   }
 
   componentDidMount() {
@@ -102,7 +100,7 @@ export class Guestbook extends Component {
   render() {
     return (
       <div>        
-        <div className="message-box">
+        <div className="page">
 
           <div className="form">
             <h3>Leave a message</h3>
@@ -119,8 +117,8 @@ export class Guestbook extends Component {
 
               <p>Broadcast your info:</p>
               <select id='display' name='display' onChange={this.change}>
-                <option value='Y'>Y</option>
-                <option value='N'>N</option>
+                <option value='Y'>Yes</option>
+                <option value='N'>No</option>
               </select>
 
               <p>Email(Optional):</p>
@@ -132,16 +130,20 @@ export class Guestbook extends Component {
 
           <div className="guestbook">
             <h3>Formal Visitors</h3>
-            {this.state.info.map((entry) => {
-              if (entry.display === 'Y') {
-                return (
-                  <div>
-                    <span className='name'>{entry.name}</span>
-                    <span className='message'>{entry.message}</span>
-                  </div>
-                )
-              }
-            })}
+            <div className="box">
+              {this.state.info.map((entry) => {
+                if (entry.display === 'Y') {
+                  return (
+                    <div className="message">
+                      <p>Name: {entry.name}</p>
+                      <p>Description: {entry.description}</p>
+                      <p>Message: {entry.message}</p>
+                      <p>Email: {entry.email}</p>
+                    </div>
+                  )
+                }
+              })}
+            </div>
           </div>
 
         </div>
