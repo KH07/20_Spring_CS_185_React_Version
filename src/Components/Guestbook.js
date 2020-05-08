@@ -9,12 +9,14 @@ export class Guestbook extends Component {
       super();
       this.state = {
         description: '',
-        display: 'N',
+        display: 'Y',
         email: '',
         message: '',
         name: '',
         info: [],
     }
+    this.change = this.change.bind(this);
+    this.sent = this.sent.bind(this);
   }
 
   componentDidMount() {
@@ -24,14 +26,14 @@ export class Guestbook extends Component {
     let newMessage = [];
     let ref = firebase.database().ref('users');
     ref.on('value', snapshot => {
-      let info = snapshot.val();
-      for (let entry in info) {
+      let data = snapshot.val();
+      for (let entry in data) {
         newMessage.push({
-          name: info[entry].name,
-          description: info[entry].description,
-          display: info[entry].display,
-          message: info[entry].message,
-          email: info[entry].email
+          name: data[entry].name,
+          description: data[entry].description,
+          display: data[entry].display,
+          message: data[entry].message,
+          email: data[entry].email
         });
       }
       this.setState({info: newMessage});
@@ -107,31 +109,31 @@ export class Guestbook extends Component {
             <form onSubmit={this.sent}>
 
               <p>Name:</p>
-              <input name='name' type='text' minLength='6' maxLength='19' change = {this.change}/>
+              <input name='name' type='text' onChange = {this.change}/>
 
               <p>A short description of yourself(Optional):</p>
-              <input name='description' type='text' maxLength='99' rows="4" change={this.change}/>
+              <input name='description' type='text' onChange={this.change}/>
 
               <p>Message:</p>
-              <input name='message' type='text' minLength='16' maxLength='499' rows="4" change={this.change}/>
+              <input name='message' type='text' onChange={this.change}/>
 
               <p>Broadcast your info:</p>
-              <select id='display' name='display' change={this.change}>
-                <option value='N'>N</option>
+              <select id='display' name='display' onChange={this.change}>
                 <option value='Y'>Y</option>
+                <option value='N'>N</option>
               </select>
 
               <p>Email(Optional):</p>
-              <input name='email' type='text' change={this.change}/>
+              <input name='email' type='text' onChange={this.change}/>
 
-              <input type='submit' id='submit' name='submit' value='Submit'></input>
+              <button>Send</button>
             </form>
           </div>
 
           <div className="guestbook">
             <h3>Formal Visitors</h3>
             {this.state.info.map((entry) => {
-              if (this.state.display !== 'Y') {
+              if (entry.display === 'Y') {
                 return (
                   <div>
                     <span className='name'>{entry.name}</span>
