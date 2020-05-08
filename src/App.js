@@ -32,6 +32,10 @@ export class App extends Component {
       {
         id: 4,
         title: 'Music'
+      },
+      {
+        id: 5,
+        title: 'Visitor'
       }
     ]
     return (
