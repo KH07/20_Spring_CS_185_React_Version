@@ -107,13 +107,13 @@ export class Guestbook extends Component {
             <form onSubmit={this.sent}>
 
               <p>Name:</p>
-              <input name='name' type='text' onChange = {this.change}/>
+              <input name='name' type='text' minLength='6' maxLength='19' onChange = {this.change}/>
 
               <p>A short description of yourself(Optional):</p>
-              <input name='description' type='text' onChange={this.change}/>
+              <input name='description' type='text' maxLength='99' onChange={this.change}/>
 
               <p>Message:</p>
-              <input name='message' type='text' onChange={this.change}/>
+              <input name='message' type='text' minLength='16' maxLength='499' onChange={this.change}/>
 
               <p>Broadcast your info:</p>
               <select id='display' name='display' onChange={this.change}>
