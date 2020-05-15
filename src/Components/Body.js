@@ -4,6 +4,7 @@ import Photos from './Photos'
 import Games from './Games'
 import Music from './Music'
 import Guestbook from './Guestbook'
+import Movies from './Movies'
 
 export class Body extends Component {
     displayContent = () => {
@@ -19,6 +20,9 @@ export class Body extends Component {
         }
         else if (activeTab === 4) {
             return <Music/>
+        }
+        else if (activeTab === 5) {
+            return <Movies/>
         }
         else {
             return <Guestbook/>
