@@ -30,7 +30,7 @@ export class Movie extends Component {
   }
 
   getRequest(id) {
-    let req = 'http://www.omdbapi.com/?apikey=909a9c3d&i='+id;
+    let req = 'https://www.omdbapi.com/?apikey=909a9c3d&i='+id;
     console.log("Requesting");
     axios.get(req)
     .then(response => {
