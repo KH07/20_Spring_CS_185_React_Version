@@ -13,7 +13,8 @@ export class Home extends Component {
                 <div className="Bio">
                     <p>Kristin Hu{'\n'}
                     UCSB Second-year CS major{'\n'}
-                    Outside CS: Movies, Sci-fi, Video Games, LEGO</p>
+                    Outside CS: Movies, Sci-fi, Video Games, LEGO{'\n'}
+                    Chinese Version under construction 遥 遥 无 期</p>
                 </div>
             </div>
         )
