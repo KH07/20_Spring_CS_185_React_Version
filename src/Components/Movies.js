@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
+import "./Movies.css"
 
 const axios = require('axios');
 
@@ -65,14 +66,14 @@ export class Movie extends Component {
         <img src={poster}
         onMouseEnter={this.dimPoster}
         onMouseLeave={this.undimPoster}
-        alt={title + "Director" + director + "IMDB Rating" + rating}>
+        alt={title + "\n" + "Director: " + director + "\n" + "IMDB Rating: " + rating + "🌟"}>
         </img>
       )
     }) 
     const Gallery = (
       <SimpleReactLightbox>
         <SRLWrapper>
-          <div >
+          <div className="Movie-grid">
             {Movies}
           </div>
         </SRLWrapper>
