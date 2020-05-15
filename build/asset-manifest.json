@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/20_Spring_CS_185_React_Version/static/css/main.dae96398.chunk.css",
-    "main.js": "/20_Spring_CS_185_React_Version/static/js/main.ce638b88.chunk.js",
-    "main.js.map": "/20_Spring_CS_185_React_Version/static/js/main.ce638b88.chunk.js.map",
+    "main.css": "/20_Spring_CS_185_React_Version/static/css/main.78d3e283.chunk.css",
+    "main.js": "/20_Spring_CS_185_React_Version/static/js/main.c5a1b654.chunk.js",
+    "main.js.map": "/20_Spring_CS_185_React_Version/static/js/main.c5a1b654.chunk.js.map",
     "runtime-main.js": "/20_Spring_CS_185_React_Version/static/js/runtime-main.9072646f.js",
     "runtime-main.js.map": "/20_Spring_CS_185_React_Version/static/js/runtime-main.9072646f.js.map",
-    "static/js/2.acf91070.chunk.js": "/20_Spring_CS_185_React_Version/static/js/2.acf91070.chunk.js",
-    "static/js/2.acf91070.chunk.js.map": "/20_Spring_CS_185_React_Version/static/js/2.acf91070.chunk.js.map",
+    "static/js/2.66dfcb91.chunk.js": "/20_Spring_CS_185_React_Version/static/js/2.66dfcb91.chunk.js",
+    "static/js/2.66dfcb91.chunk.js.map": "/20_Spring_CS_185_React_Version/static/js/2.66dfcb91.chunk.js.map",
     "index.html": "/20_Spring_CS_185_React_Version/index.html",
-    "precache-manifest.9b533943ebf87ff63a0b74c1809996d5.js": "/20_Spring_CS_185_React_Version/precache-manifest.9b533943ebf87ff63a0b74c1809996d5.js",
+    "precache-manifest.dd6b87e4e0063f04e2a73f41b8026335.js": "/20_Spring_CS_185_React_Version/precache-manifest.dd6b87e4e0063f04e2a73f41b8026335.js",
     "service-worker.js": "/20_Spring_CS_185_React_Version/service-worker.js",
-    "static/css/main.dae96398.chunk.css.map": "/20_Spring_CS_185_React_Version/static/css/main.dae96398.chunk.css.map",
-    "static/js/2.acf91070.chunk.js.LICENSE.txt": "/20_Spring_CS_185_React_Version/static/js/2.acf91070.chunk.js.LICENSE.txt",
+    "static/css/main.78d3e283.chunk.css.map": "/20_Spring_CS_185_React_Version/static/css/main.78d3e283.chunk.css.map",
+    "static/js/2.66dfcb91.chunk.js.LICENSE.txt": "/20_Spring_CS_185_React_Version/static/js/2.66dfcb91.chunk.js.LICENSE.txt",
     "static/media/1.jpeg": "/20_Spring_CS_185_React_Version/static/media/1.9343f6cd.jpeg",
     "static/media/2.jpeg": "/20_Spring_CS_185_React_Version/static/media/2.672b43dc.jpeg",
     "static/media/3.jpeg": "/20_Spring_CS_185_React_Version/static/media/3.f3c1e9ad.jpeg",
@@ -23,8 +23,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.9072646f.js",
-    "static/js/2.acf91070.chunk.js",
-    "static/css/main.dae96398.chunk.css",
-    "static/js/main.ce638b88.chunk.js"
+    "static/js/2.66dfcb91.chunk.js",
+    "static/css/main.78d3e283.chunk.css",
+    "static/js/main.c5a1b654.chunk.js"
   ]
 }
