@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { SRLWrapper } from "simple-react-lightbox"
+import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
 
 const axios = require('axios');
 
@@ -35,7 +35,6 @@ export class Movie extends Component {
     .then(response => {
       console.log("Get");
       const movie = {
-        id,
         poster: response.data.Poster,
         title: response.data.Title,
         director: response.data.Director,
@@ -51,19 +50,35 @@ export class Movie extends Component {
     });
   }
 
+  dimPoster = (e) => {
+    e.target.style.filter= 'brightness(40%)';
+  }
+
+  undimPoster = (e) => {
+    e.target.style.filter= 'brightness(100%)';
+  }
+
   render() {
-    
-    return(
-      <SRLWrapper>
-        <div>
-          {this.state.movies.map(({id, poster, title, director, rating}) => {
-            return(
-              <img src={poster} alt={title + "Director" + director + "IMDB Rating" + rating} ></img>
-            )
-          })}
-        </div>
-      </SRLWrapper>
-    );
+    const Movies = this.state.movies &&
+    this.state.movies.map(({poster, title, director, rating}) => {
+      return(
+        <img src={poster}
+        onMouseEnter={this.dimPoster}
+        onMouseLeave={this.undimPoster}
+        alt={title + "Director" + director + "IMDB Rating" + rating}>
+        </img>
+      )
+    }) 
+    const Gallery = (
+      <SimpleReactLightbox>
+        <SRLWrapper>
+          <div >
+            {Movies}
+          </div>
+        </SRLWrapper>
+      </SimpleReactLightbox>
+    )
+    return Gallery;
   }
 
 }
