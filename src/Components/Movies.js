@@ -1,8 +1,10 @@
 import React, { Component } from "react"
+import config from "../config"
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
 import "./Movies.css"
 
 const axios = require('axios');
+const firebase = require('firebase');
 
 const movieIDs = [
   'tt2084970', // The Imitation Game
@@ -25,6 +27,10 @@ export class Movie extends Component {
   }
 
   componentDidMount() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config)
+    }
+
     movieIDs.forEach(id => {
       this.getRequest(id)
     })
@@ -62,11 +68,11 @@ export class Movie extends Component {
 
   valid() {
     let id = this.state.ID;
-    if (id.length !== 10 || id[0] !== 't' || id[1] !== 't') {
+    if (id.length !== 9 || id[0] !== 't' || id[1] !== 't') {
       return false;
     }
     var i;
-    for (i=2; i<10; i++) {
+    for (i=2; i<9; i++) {
       if (!isNaN(id[i])) {
         return false;
       }
@@ -77,7 +83,10 @@ export class Movie extends Component {
   sent = (event) => {
     event.preventDefault()
     if (this.valid) {
-
+      const movieIDRef = firebase.database().ref('movieIDs');
+      const newID = {id: this.state.ID}
+      movieIDRef.push(newID);
+      this.setState({id: '',})
     }
   }
 
@@ -99,7 +108,7 @@ export class Movie extends Component {
       <div className='movies'>
         <div className='search-box'>
           <form onSubmit={this.sent}>
-            <input name='ID' type='text' minLength='10' maxLength='10' onChange={this.change}></input>
+            <input name='ID' type='text' minLength='9' maxLength='9' onChange={this.change}></input>
             <button>Search</button>
           </form>
         </div>
