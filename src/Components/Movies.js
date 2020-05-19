@@ -19,6 +19,7 @@ export class Movie extends Component {
   constructor() {
     super();
     this.state = {
+      ID: '',
       movies : [],
     }
   }
@@ -59,27 +60,58 @@ export class Movie extends Component {
     e.target.style.filter= 'brightness(100%)';
   }
 
+  valid() {
+    let id = this.state.ID;
+    if (id.length !== 10 || id[0] !== 't' || id[1] !== 't') {
+      return false;
+    }
+    var i;
+    for (i=2; i<10; i++) {
+      if (!isNaN(id[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  sent = (event) => {
+    event.preventDefault()
+    if (this.valid) {
+
+    }
+  }
+
+  change = (event) => {
+    this.setState({[event.target.name]: event.target.value});
+  }
+
   render() {
-    const Movies = this.state.movies &&
-    this.state.movies.map(({poster, title, director, rating}) => {
-      return(
+    const Movies = this.state.movies && this.state.movies.map(({poster, title, director, rating}) => {
+      return (
         <img src={poster}
         onMouseEnter={this.dimPoster}
         onMouseLeave={this.undimPoster}
         alt={title + "\n" + "Director: " + director + "\n" + "IMDB Rating: " + rating + "🌟"}>
         </img>
-      )
+      );
     }) 
-    const Gallery = (
-      <SimpleReactLightbox>
-        <SRLWrapper>
-          <div className="Movie-grid">
-            {Movies}
-          </div>
-        </SRLWrapper>
-      </SimpleReactLightbox>
-    )
-    return Gallery;
+    return (
+      <div className='movies'>
+        <div className='search-box'>
+          <form onSubmit={this.sent}>
+            <input name='ID' type='text' minLength='10' maxLength='10' onChange={this.change}></input>
+            <button>Search</button>
+          </form>
+        </div>
+        <SimpleReactLightbox>
+          <SRLWrapper>
+            <div className="Movie-grid">
+              {Movies}
+            </div>
+          </SRLWrapper>
+        </SimpleReactLightbox>
+      </div>
+    );
   }
 
 }

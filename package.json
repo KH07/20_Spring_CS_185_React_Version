@@ -4,6 +4,7 @@
   "homepage": "https://kh07.github.io/20_Spring_CS_185_React_Version",
   "private": true,
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^5.4.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
