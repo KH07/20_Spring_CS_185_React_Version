@@ -1,47 +1,45 @@
 import React, { Component } from "react"
-import Tablist from "./Tablist"
-import MovieBody from "./MovieBody"
+import Dropdown from "react-bootstrap/Dropdown"
+import DropdownButton from "react-bootstrap/DropdownButton"
+import AllMovies from "./AllMovies"
+import AddMovie from "./AddMovie"
+import CreateList from "./CreateList"
+import config from "../config"
 import "./Movies.css"
 
-export class Movie extends Component {
+const firebase = require('firebase');
+
+export class Movies extends Component {
   constructor() {
     super();
     this.state = {
-      activeTab : 0
+      lists: [],
     }
-    this.changeTab = (id) => {
-      this.setState({
-        activeTab:id
-      })
+    this.loadList();
+  }
+
+  loadList() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config)
     }
+    let ref = firebase.database().ref('movieLists');
   }
 
   render() {
-    const tabs = [
-      {
-        id: 0,
-        title: 'All Movies'
-      },
-      {
-        id: 1,
-        title: 'Add Movie',
-      },
-      {
-        id: 2,
-        title: 'Create List',
-      }
-    ]
-     
     return (
       <div className='movies'>
         <div className='movie-nav-bar'>
-          <Tablist tabs={tabs}
-          changeTab={this.changeTab}
-          activeTab={this.state.activeTab}
-          />
+          <div className='dropdown-menu'>
+            <DropdownButton title="All">
+              <Dropdown.Item>List1</Dropdown.Item>
+              <Dropdown.Item>List2</Dropdown.Item>
+            </DropdownButton>
+          </div>
+          <AddMovie />
+          <CreateList />
         </div>
-        <div className='move-body'>
-          <MovieBody activeTab={this.state.activeTab}/>
+        <div className='movie-details'>
+          <AllMovies />
         </div>
       </div>
     );
@@ -49,4 +47,4 @@ export class Movie extends Component {
 
 }
 
-export default Movie;
+export default Movies;

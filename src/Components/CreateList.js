@@ -13,7 +13,7 @@ export class CreateList extends Component {
   sent = (event) => {
     event.preventDefault()
     const movieListRef = firebase.database().ref('movieLists');
-    const newList = {id: this.state.ListName}
+    const newList = {ListName: this.state.ListName}
     movieListRef.push(newList);
     this.setState({ListName: '',})
   }

@@ -1,7 +1,4 @@
 .movie-nav-bar {
     display: flex;
-}
-
-.tab {
-    width: 33%;
+    justify-content: space-around;
 }
