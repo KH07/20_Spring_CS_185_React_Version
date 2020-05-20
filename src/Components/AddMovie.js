@@ -4,6 +4,12 @@ import "./AddMovie.css"
 const firebase = require('firebase');
 
 export class AddMovies extends Component {
+  constructor() {
+    super();
+    this.state = {
+      ID: ''
+    }
+  }
 
   valid() {
     let id = this.state.ID;
