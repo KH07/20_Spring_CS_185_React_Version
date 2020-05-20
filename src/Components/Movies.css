@@ -2,3 +2,18 @@
     display: flex;
     justify-content: space-around;
 }
+
+DropdownButton {
+    background-color: rgb(75, 213, 238);
+    justify-self: center;
+}
+
+.Movie-grid {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-row-gap: 20px;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+}
