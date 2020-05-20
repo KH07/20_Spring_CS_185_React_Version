@@ -6,33 +6,39 @@ import "./Movies.css"
 const axios = require('axios');
 const firebase = require('firebase');
 
-const movieIDs = [
-  'tt2084970', // The Imitation Game
-  'tt2948356', // Zootopia
-  'tt4633694', // Spider-Man: Into the Spider-Verse
-  'tt6751668', // Parasite
-  'tt1856101', // Blade Runner 2049
-  'tt0816692', // Interstellar
-  'tt2543164', // Arrival
-  'tt7605074', // The Wandering Earth
-];
+// const movieIDs = [
+//   'tt2084970', // The Imitation Game
+//   'tt2948356', // Zootopia
+//   'tt4633694', // Spider-Man: Into the Spider-Verse
+//   'tt6751668', // Parasite
+//   'tt1856101', // Blade Runner 2049
+//   'tt0816692', // Interstellar
+//   'tt2543164', // Arrival
+//   'tt7605074', // The Wandering Earth
+// ];
 
 export class Movie extends Component {
   constructor() {
     super();
     this.state = {
       ID: '',
-      movies : [],
+      movieIDs: [],
+      movies: [],
     }
+    this.display();
   }
 
-  componentDidMount() {
+  display() {
     if (!firebase.apps.length) {
       firebase.initializeApp(config)
     }
-
-    movieIDs.forEach(id => {
-      this.getRequest(id)
+    let ref = firebase.database().ref('movieIDs');
+    ref.on('value', snapshot => {
+      let data = snapshot.val();
+      for (let entry in data) {
+        console.log(data[entry].id);
+        this.getRequest(data[entry].id);
+      }
     })
   }
 
