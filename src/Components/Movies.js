@@ -21,6 +21,22 @@ export class Movies extends Component {
     this.loadMovies();
   }
 
+  loadList() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config)
+    }
+    let ref = firebase.database().ref('movieLists');
+    ref.on('value', snapshot => {
+      let data = snapshot.val();
+      let newLists = [];
+      for (let entry in data) {
+        newLists.push(data[entry].ListName);
+      }
+      this.lists = newLists;
+      console.log(this.lists);
+    })
+  }
+
   loadMovies() {
     if (!firebase.apps.length) {
       firebase.initializeApp(config)
@@ -48,7 +64,6 @@ export class Movies extends Component {
         director: response.data.Director,
         rating: response.data.imdbRating,
       }
-      
       this.setState({movies: [...this.state.movies, movie]})
     })
     .catch(function(error){
@@ -67,12 +82,6 @@ export class Movies extends Component {
     e.target.style.filter= 'brightness(100%)';
   }
 
-  loadList() {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(config)
-    }
-    let ref = firebase.database().ref('movieLists');
-  }
 
   render() {
     const Movies = this.state.movies && this.state.movies.map(({poster, title, director, rating}) => {
@@ -88,11 +97,14 @@ export class Movies extends Component {
     return (
       <div className='movies'>
         <div className='movie-nav-bar'>
-          <div className='dropdown-menu'>
-            <DropdownButton title="All">
-              <Dropdown.Item>List1</Dropdown.Item>
-              <Dropdown.Item>List2</Dropdown.Item>
-            </DropdownButton>
+          <div className='lists'>
+            <select name="List" id='list'>
+              <option value="all">All</option>
+              {
+                this.state.lists.map((list) =>
+                <option value={list}>{list}</option>)
+              }
+            </select>
           </div>
           <AddMovie />
           <CreateList />
