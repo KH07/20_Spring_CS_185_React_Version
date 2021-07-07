@@ -1,3 +1,13 @@
+.movie-nav-bar {
+    display: flex;
+    justify-content: space-around;
+}
+
+DropdownButton {
+    background-color: rgb(75, 213, 238);
+    justify-self: center;
+}
+
 .Movie-grid {
     display: grid;
     margin-top: 20px;

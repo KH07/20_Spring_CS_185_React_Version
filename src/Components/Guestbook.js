@@ -68,6 +68,8 @@ export class Guestbook extends Component {
       alert("Missing required field: Display your information");
       return false;
     }
+
+    return true;
   }
 
   sent = (event) => {

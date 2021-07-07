@@ -6,6 +6,7 @@ import Music from './Music'
 import Guestbook from './Guestbook'
 import Movies from './Movies'
 
+
 export class Body extends Component {
     displayContent = () => {
         var activeTab = this.props.activeTab
@@ -28,6 +29,7 @@ export class Body extends Component {
             return <Guestbook/>
         }
     }
+
     render() {
         return (this.displayContent());
     }

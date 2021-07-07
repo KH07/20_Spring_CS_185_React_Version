@@ -1,31 +1,54 @@
 import React, { Component } from "react"
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
+import Dropdown from "react-bootstrap/Dropdown"
+import DropdownButton from "react-bootstrap/DropdownButton"
+import AddMovie from "./AddMovie"
+import CreateList from "./CreateList"
+import config from "../config"
 import "./Movies.css"
 
 const axios = require('axios');
+const firebase = require('firebase');
 
-const movieIDs = [
-  'tt2084970', // The Imitation Game
-  'tt2948356', // Zootopia
-  'tt4633694', // Spider-Man: Into the Spider-Verse
-  'tt6751668', // Parasite
-  'tt1856101', // Blade Runner 2049
-  'tt0816692', // Interstellar
-  'tt2543164', // Arrival
-  'tt7605074', // The Wandering Earth
-];
-
-export class Movie extends Component {
+export class Movies extends Component {
   constructor() {
     super();
     this.state = {
-      movies : [],
+      lists: [],
+      movies: [],
     }
+    this.loadList();
+    this.loadMovies();
   }
 
-  componentDidMount() {
-    movieIDs.forEach(id => {
-      this.getRequest(id)
+  loadList() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config)
+    }
+    let ref = firebase.database().ref('movieLists');
+    ref.on('value', snapshot => {
+      let data = snapshot.val();
+      let newLists = [];
+      for (let entry in data) {
+        newLists.push(data[entry].ListName);
+      }
+      this.lists = newLists;
+      console.log(this.lists);
+    })
+  }
+
+  loadMovies() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config)
+    }
+    let ref = firebase.database().ref('movieIDs');
+    ref.on('value', snapshot => {
+      let data = snapshot.val();
+      console.log(data);
+      for (let entry in data) {
+        console.log(data[entry].id);
+        this.getRequest(data[entry].id);
+      }
     })
   }
 
@@ -59,29 +82,46 @@ export class Movie extends Component {
     e.target.style.filter= 'brightness(100%)';
   }
 
+
   render() {
-    const Movies = this.state.movies &&
-    this.state.movies.map(({poster, title, director, rating}) => {
-      return(
+    const Movies = this.state.movies && this.state.movies.map(({poster, title, director, rating}) => {
+      return (
         <img src={poster}
         onMouseEnter={this.dimPoster}
         onMouseLeave={this.undimPoster}
         alt={title + "\n" + "Director: " + director + "\n" + "IMDB Rating: " + rating + "🌟"}>
         </img>
-      )
-    }) 
-    const Gallery = (
-      <SimpleReactLightbox>
-        <SRLWrapper>
-          <div className="Movie-grid">
-            {Movies}
+      );
+    })
+
+    return (
+      <div className='movies'>
+        <div className='movie-nav-bar'>
+          <div className='lists'>
+            <select name="List" id='list'>
+              <option value="all">All</option>
+              {
+                this.state.lists.map((list) =>
+                <option value={list}>{list}</option>)
+              }
+            </select>
           </div>
-        </SRLWrapper>
-      </SimpleReactLightbox>
-    )
-    return Gallery;
+          <AddMovie />
+          <CreateList />
+        </div>
+        <div className='movie-details'>
+          <SimpleReactLightbox>
+            <SRLWrapper>
+              <div className="Movie-grid">
+                {Movies}
+              </div>
+            </SRLWrapper>
+          </SimpleReactLightbox>
+        </div>
+      </div>
+    );
   }
 
 }
 
-export default Movie;
+export default Movies;
